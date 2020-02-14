@@ -1,0 +1,45 @@
+public class final{
+	private boolean adjacenyMatrix[][];
+    private int numVert;
+
+    public final(int numVert) {
+        this.numVert = numVert;
+        adjacenyMatrix = new boolean[numVert][numVert];
+    }
+
+    public void addEdge(int i, int j) {
+    	adjacenyMatrix[i][j] = true;
+    	adjacenyMatrix[j][i] = true;
+    }
+
+    public void removeEdge(int i, int j) {
+    	adjacenyMatrix[i][j] = false;
+    	adjacenyMatrix[j][i] = false;
+    }
+
+    public boolean isEdge(int i, int j) {
+    	return adjacenyMatrix[i][j];
+    }
+  public String toString() {
+      StringBuilder s = new StringBuilder();
+      for (int i = 0; i < numVert; i++) {
+          s.append(i + ": ");
+          for (boolean j : adjacenyMatrix[i]) {
+              s.append((j?1:0) + " ");
+          }
+          s.append("\n");
+      }
+      return s.toString();
+  }
+  public static void main(String args[])
+  {
+	  final SK = new final(5);
+
+	  SK.addEdge(1, 1);
+	  SK.addEdge(2, 4);
+	  SK.addEdge(1, 3);
+	  SK.addEdge(4, 4);
+	  
+      System.out.print(SK.toString());
+  }
+}
